@@ -1,0 +1,26 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d             i 
+
+bspc config border_width         2
+bspc config window_gap           8
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^1'
+bspc rule -a Code desktop='^3'
+bspc rule -a Emacs desktop='^3'
+bspc rule -a Vim desktop='^3'
+bspc rule -a Neovim desktop='^3'
+bspc rule -a Zathura desktop='^4'
+bspc rule -a Zoom desktop='^5'
+bspc rule -a Spotify desktop='^6'
+bspc rule -a Lxappearance desktop='^6'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off

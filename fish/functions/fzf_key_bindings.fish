@@ -1,0 +1,1 @@
+/home/vedant/.fzf/shell/key-bindings.fish

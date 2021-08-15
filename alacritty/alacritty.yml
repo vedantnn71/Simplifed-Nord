@@ -1,0 +1,6 @@
+import:
+- /home/vedant/.config/alacritty/nord.yml
+
+font:
+  normal:
+    family: Iosevka Nerd Font
