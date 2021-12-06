@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -69,67 +69,174 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  SimpylFold = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/SimpylFold",
+    url = "https://github.com/tmhedberg/SimpylFold"
+  },
   ["coc.nvim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["dart-vim-plugin"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/dart-vim-plugin",
+    url = "https://github.com/dart-lang/dart-vim-plugin"
+  },
+  ["denops-docker.vim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/denops-docker.vim",
+    url = "https://github.com/skanehira/denops-docker.vim"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/emmet-vim",
+    url = "https://github.com/mattn/emmet-vim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["neoscroll.nvim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["nord-vim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/nord-vim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/nord-vim",
+    url = "https://github.com/arcticicestudio/nord-vim"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  rainbow = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/rainbow",
+    url = "https://github.com/luochen1990/rainbow"
   },
   ["rust.vim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/rust.vim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
   },
   syntastic = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/syntastic"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/syntastic",
+    url = "https://github.com/vim-syntastic/syntastic"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["typescript-vim"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/typescript-vim",
+    url = "https://github.com/leafgarland/typescript-vim"
+  },
+  ["vim-css-color"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-css-color",
+    url = "https://github.com/ap/vim-css-color"
+  },
+  ["vim-css3-syntax"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-css3-syntax",
+    url = "https://github.com/hail2u/vim-css3-syntax"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    url = "https://github.com/ryanoasis/vim-devicons"
+  },
+  ["vim-graphql"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-graphql",
+    url = "https://github.com/jparise/vim-graphql"
+  },
+  ["vim-javascript"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-javascript",
+    url = "https://github.com/pangloss/vim-javascript"
+  },
+  ["vim-jsx-pretty"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
+    url = "https://github.com/MaxMEllon/vim-jsx-pretty"
+  },
+  ["vim-jsx-typescript"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-jsx-typescript",
+    url = "https://github.com/peitalin/vim-jsx-typescript"
   },
   ["vim-moonfly-statusline"] = {
-    config = { "\27LJ\2\2S\0\0\2\0\4\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\3\0K\0\1\0\19moonflyItalics\23moonflyCursorColor\6g\bvim\0" },
+    config = { "\27LJ\2\nS\0\0\2\0\4\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\3\0K\0\1\0\19moonflyItalics\23moonflyCursorColor\6g\bvim\0" },
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-moonfly-statusline"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-moonfly-statusline",
+    url = "https://github.com/bluz71/vim-moonfly-statusline"
   },
   ["vim-prettier"] = {
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-prettier"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-prettier",
+    url = "https://github.com/prettier/vim-prettier"
+  },
+  ["vim-styled-components"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-styled-components",
+    url = "https://github.com/styled-components/vim-styled-components"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   vimwiki = {
-    config = { "\27LJ\2\2g\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\14.markdown\rmarkdown\b.md\rmarkdown\v.mdown\rmarkdown\23vimwiki_ext2syntax\6g\bvim\0" },
+    config = { "\27LJ\2\ng\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\23vimwiki_ext2syntax\6g\bvim\0" },
     loaded = true,
-    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vimwiki"
+    path = "/home/vn/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-moonfly-statusline
-time([[Config for vim-moonfly-statusline]], true)
-try_loadstring("\27LJ\2\2S\0\0\2\0\4\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\3\0K\0\1\0\19moonflyItalics\23moonflyCursorColor\6g\bvim\0", "config", "vim-moonfly-statusline")
-time([[Config for vim-moonfly-statusline]], false)
 -- Config for: vimwiki
 time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\2\2g\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\14.markdown\rmarkdown\b.md\rmarkdown\v.mdown\rmarkdown\23vimwiki_ext2syntax\6g\bvim\0", "config", "vimwiki")
+try_loadstring("\27LJ\2\ng\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\3\b.md\rmarkdown\v.mdown\rmarkdown\14.markdown\rmarkdown\23vimwiki_ext2syntax\6g\bvim\0", "config", "vimwiki")
 time([[Config for vimwiki]], false)
+-- Config for: vim-moonfly-statusline
+time([[Config for vim-moonfly-statusline]], true)
+try_loadstring("\27LJ\2\nS\0\0\2\0\4\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\3\0K\0\1\0\19moonflyItalics\23moonflyCursorColor\6g\bvim\0", "config", "vim-moonfly-statusline")
+time([[Config for vim-moonfly-statusline]], false)
 if should_profile then save_profiles() end
 
 end)

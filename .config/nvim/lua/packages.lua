@@ -12,9 +12,11 @@ require('packer').startup(function()
 	end
 	}
 	use {
-	  'hoob3rt/lualine.nvim',
+	  'nvim-lualine/lualine.nvim',
 	  requires = {'kyazdani42/nvim-web-devicons', opt = true}
 	}
+        use 'stevearc/dressing.nvim'
+        use 'luochen1990/rainbow'
 	use {
 		'bluz71/vim-moonfly-statusline',
 		config = function()
@@ -30,6 +32,25 @@ require('packer').startup(function()
 	  }
 	}
 	use 'prettier/vim-prettier'
-	use 'neoclide/coc.nvim'
 	use 'rust-lang/rust.vim';
+        use 'pangloss/vim-javascript'
+        use 'leafgarland/typescript-vim'
+        use 'mattn/emmet-vim'
+        use 'peitalin/vim-jsx-typescript'
+        use {
+            'styled-components/vim-styled-components'
+        }
+        use {'neoclide/coc.nvim', branch = 'release'}
+        use {'mg979/vim-visual-multi'}
+        use 'tpope/vim-surround'
+        use 'akinsho/toggleterm.nvim'
+        use 'skanehira/denops-docker.vim'
+        use 'tmhedberg/SimpylFold'
+        use 'MaxMEllon/vim-jsx-pretty'
+        use 'jparise/vim-graphql'
+        use 'hail2u/vim-css3-syntax'
+        use 'ap/vim-css-color'
+        use 'karb94/neoscroll.nvim'
+        use 'ryanoasis/vim-devicons'
+        use 'dart-lang/dart-vim-plugin'
 end)
