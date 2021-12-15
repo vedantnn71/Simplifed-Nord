@@ -29,3 +29,6 @@ redshift-gtk &
 
 # Eww Daemon for some of its widgets
 eww daemon &
+
+# Le'me check internet
+nm-applet &

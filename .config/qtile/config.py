@@ -12,10 +12,10 @@ mod = "mod4"
 alt = "mod1"
 
 # Default Apps
-terminal = "st"
-browser = "qutebrowser"
+terminal = "alacritty"
+browser = "brave-browser-dev"
 file_manager = "thunar"
-text_editor = "emacs"
+text_editor = "alacritty -e '/bin/nvim'"
 music_client = "spotify"
 
 keys = [
@@ -51,14 +51,15 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, "control"], "Return", lazy.spawn(terminal + " -e /bin/tmux"), desc="Launch tmux terminal"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "x", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.spawn(".config/qtile/scripts/rofi/powermenu.sh"), desc="Shutdown Qtile"),
-    Key([mod], "p", lazy.spawn(".config/qtile/scripts/rofi/launcher.sh"),
-        desc="rofi -show drun"),
+    Key([mod], "p", lazy.spawn("dmenu_run"),
+        desc="Runner"),
 
     # Launch Apps
     Key(["mod1", "shift"], "b", lazy.spawn(browser), desc="Launch Web Browser"),
@@ -114,10 +115,11 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group
 
 layout_theme = {
-	"border_width": 2,
+	"border_width": 0,
     "margin": 8,
     "border_focus": "4c566a",
-    "border_normal": "2e3440"
+    "border_normal": "2e3440",
+    "border_radius": 8,
 }
 
 layouts = [
@@ -146,7 +148,7 @@ colors = [
         ["#242831", "#242831"],  # 14 super dark background
 ]
 widget_defaults = {
-    'font': 'Iosevka Nerd Font',
+    'font': 'JetBrainsMono Nerd Font',
     'fontsize': 12,
     'padding': 3,
     'background': colors[14]
@@ -184,6 +186,7 @@ screens = [
                     ),
                     widget.Sep(
                         size_percent=40,
+                        opacity = 0,
                     ),
                     widget.GroupBox(**group_box_settings),
                     widget.Spacer(
@@ -191,7 +194,7 @@ screens = [
                     ),
                     widget.WindowName(
                         empty_group_string = "Desktop",
-                        format = " {name}",
+                        format = "  {name}",
                         background = colors[14],
                         max_chars = 15
                     ),
@@ -212,9 +215,9 @@ screens = [
                         padding = 20
                     ),
                     widget.CurrentLayoutIcon(
-                        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icon")],
-                        foreground=colors[4],
-                        scale=0.40
+                        custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+                        foreground=colors[3],
+                        scale=0.50
                     ),
                    widget.Sep(
                        size_percent = 40,
@@ -228,10 +231,16 @@ screens = [
                        size_percent = 40,
                        padding = 20
                    ),
+                   widget.Systray(),
+                   widget.Sep(
+                           size_percent = 40,
+                           icon_size = 14,
+                           padding = 20
+                    ),
                    widget.TextBox(
                         "",
-                        mouse_callbacks = {"Button1": lambda: qtile.cmd_spawn(".config/qtile/scripts/rofi/powermenu.sh")},
-                        foreground = colors[3]
+                        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(".config/qtile/scripts/rofi/powermenu.sh")},
+                        foreground=colors[3]
                     ),
                    widget.Sep(
                        size_percent = 0,
@@ -240,6 +249,7 @@ screens = [
 
                 ],
             32,
+            margin=[6, 6, 6, 6],
             background=colors[14]
         ),
     ),
